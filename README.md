@@ -1,6 +1,6 @@
 The Umbrella generator use as input CSV file as below :
 
-'''
+"""
 +--------------+                             +------------------+
 |              |                             |                  |
 |              |                             |                  |
@@ -28,7 +28,7 @@ The Umbrella generator use as input CSV file as below :
           |               X         X                   |
           |            X                 X              |
           |          X                        X         |
-   Primaru|       X Backup               PrimaryX       | Backup
+   Primary|       X Backup              Primary X       | Backup
           |    X                                   X    |
 +---------+-X------+                          +--------X+---------+
 |                  |                          |                   |
@@ -64,4 +64,4 @@ The Umbrella generator use as input CSV file as below :
                        |               |
                        |               |
                        +---------------+
-'''
+"""
