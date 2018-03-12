@@ -1,0 +1,16 @@
+idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
+0,r1-touix-viviers,91.213.236.24,2001:7f8:68::20:6059:1,24:a4:3c:3c:98:bb,viviers-fibre,TLS00,Edge1,4,Production
+1,RS_TouIX 2,91.213.236.1,2001:7f8:68::4:7184:2,84:2b:2b:73:06:7e,TouIX,TLS00,Edge1,1,Production
+2,R_Adista,91.213.236.22,2001:7f8:68::1:6347:1,00:0b:fc:57:5c:1b,Adista,TLS00,Edge1,3,Production
+3,R_Tetaneutral,91.213.236.14,2001:7f8:68::19:7422:1,90:e2:ba:20:b7:5c,Tetaneutral,TLS00,Edge1,52,Production
+4,R_LyonIX,91.213.236.13,2001:7f8:68::4:3100:1,54:75:d0:66:fa:c0,LyonIX,TLS00,Edge1,48,Production
+5,R_Fullsave_2,91.213.236.15,2001:7f8:68::3:9405:2,08:b2:58:99:e4:08,Fullsave,TLS00,Edge1,2,Production
+6,R_Fullsave_1,91.213.236.11,2001:7f8:68::3:9405:1,00:07:ec:6c:28:00,Fullsave,TLS00,Edge1,2,Production
+7,R_Mediactive,91.213.236.19,2001:7f8:68::19:7133:1,08:81:f4:84:67:50,Mediactive,Zayo,Edge2,2,Production
+8,R_Ineonet,91.213.236.23,2001:7f8:68::19:7492:1,00:25:83:b0:34:1b,Ineonet,Cogent,Edge3,5,Production
+9,R_AZA_Telecom,91.213.236.20,2001:7f8:68::5:7468:1,08:81:f4:89:8c:71,AZA Telecom,Cogent,Edge3,48,Production
+10,R_DDO_Org_2,91.213.236.17,2001:7f8:68::3:741:2,00:1c:b0:b9:10:1b,DDO Org.,Cogent,Edge3,4,Production
+11,R_DDO_Org_1,91.213.236.16,2001:7f8:68::3:741:1,00:0b:fc:21:14:1b,DDO Org.,Cogent,Edge3,4,Production
+12,R_IMS,91.213.236.10,2001:7f8:68::2:900:1,00:1b:0d:e4:b6:00,IMS,Cogent,Edge3,2,Production
+13,R_Alsatis,91.213.236.12,2001:7f8:68::4:8072:1,08:81:f4:86:fa:e0,Alsatis,Cogent,Edge3,3,Production
+14,RS_TouIX 1,91.213.236.26,2001:7f8:68::4:7184:1,00:13:72:fc:d8:94,TouIX,Cogent,Edge3,48,Production
