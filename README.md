@@ -27,7 +27,7 @@ idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
 3,h4,10.0.0.4,2001:7f8:68::4,00:00:00:00:00:04,h4,TLS01,sw1,4,Production
 ```
 
-## The settings.py need to reflect the exact config of you deployed network 
+## The settings.py need to reflect the exact config of your network 
 
 Uncomment the approriate section and fullfil the right information. 
 
