@@ -1,6 +1,6 @@
 Umbrella.py is a v0.1 script to generate fAUCET YAML config file  
 
-It is fully test on Python 3.6 
+It runs with Python 3.6 
 
 Dependencies :
 
