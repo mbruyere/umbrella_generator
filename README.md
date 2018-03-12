@@ -10,18 +10,17 @@ Usage:
 
 It is required to have a CSV file with this header column and filled with rigth information. 
 
-'''
+```
 idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
 0,h1,10.0.0.1,2001:7f8:68::1,00:00:00:00:00:01,h1,TLS00,sw1,1,Production
 1,h2,10.0.0.2,2001:7f8:68::2,00:00:00:00:00:02,h2,TLS00,sw1,2,Production
 2,h3,10.0.0.3,2001:7f8:68::3,00:00:00:00:00:03,h3,TLS00,sw1,3,Production
 3,h4,10.0.0.4,2001:7f8:68::4,00:00:00:00:00:04,h4,TLS01,sw1,4,Production
-'''
+```
 
-This settings.py need to reflect the exact config of you deplyed network 
+**** The settings.py need to reflect the exact config of you deployed network 
 
 Uncomment the approriate section and fullfil the right information. 
-
 
 *** One switch 
 
@@ -31,13 +30,13 @@ sw1_type = 'Allied-Telesis'
 
 
 ***One switch plus legacy non SDN switch 
-'''
+```
 +-------------------+            +----------+
 |                   |            |          |
 |  none SDN switch  --------------   SW1    |
 |                   |            |          |
 +-------------------+            +----------+
-'''
+```
 Uncomment this section below when topo arguments is equal to one_legacy
 
 vlan_name = 'IXP_VLAN'
@@ -47,7 +46,7 @@ sw1_type = 'Allied-Telesis'
 
 
 *** two switch plus two legacy:
-'''
+```
 +-----------------------+                  +--------------------------+
 |                       |                  |                          |
 |Primary non SDN switch -------------------- Secondary non SDN switch |
@@ -65,7 +64,7 @@ sw1_type = 'Allied-Telesis'
 |   SW!     |                                     |    SW2     |       
 |           |                                     |            |       
 +-----------+                                     +------------+       
-'''
+```
 Uncomment this section below when topo  arguments is equal to two_legacy
 
 vlan_name = 'PIXIE'
@@ -80,7 +79,7 @@ sw2_type = 'Open vSwitch'
 
 
 # Triangle :
-'''
+```
 +---------+                       +---------+
 |         |                       |         |
 |  SW1    -------------------------   SW2   |
@@ -96,7 +95,7 @@ sw2_type = 'Open vSwitch'
                 |  SW3   |                   
                 |        |                   
                 +--------+                   
-'''
+```
 Uncomment this section below when topo  arguments is equal to triangle
 
 vlan_name = 'IXP_VLAN'
