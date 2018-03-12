@@ -1,5 +1,14 @@
 Umbrella.py is a v0.1 script to generate fAUCET YAML config file  
 
+It is fully test on Python 3.6 
+
+Dependencies :
+
+```
+pip3 install pathlib2==2.3.0 docopt==0.6.2 ruamel.yaml==0.15.35 ipaddress==1.0.19
+```
+
+
 How to use it :
 ```
 ./umbrella.py
