@@ -9,7 +9,7 @@ pip3 install pathlib2==2.3.0 docopt==0.6.2 ruamel.yaml==0.15.35 ipaddress==1.0.1
 ```
 
 
-How to use it :
+*** How to use it :***
 ```
 ./umbrella.py
 Usage:
@@ -27,18 +27,18 @@ idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
 3,h4,10.0.0.4,2001:7f8:68::4,00:00:00:00:00:04,h4,TLS01,sw1,4,Production
 ```
 
-**** The settings.py need to reflect the exact config of you deployed network 
+## The settings.py need to reflect the exact config of you deployed network 
 
 Uncomment the approriate section and fullfil the right information. 
 
-*** One switch 
+### One switch 
 ```
 vlan_name = 'IXP_VLAN'
 dp_id_sw1 = 0x1
 sw1_type = 'Allied-Telesis'
 ```
 
-***One switch plus legacy non SDN switch 
+***One switch plus legacy non SDN switch***
 ```
 +-------------------+            +----------+
 |                   |            |          |
@@ -53,8 +53,7 @@ dp_id_sw1 = 0x1
 sw1_type = 'Allied-Telesis'
 ```
 
-
-*** two switch plus two legacy:
+### Two switch plus two legacy:
 ```
 +-----------------------+                  +--------------------------+
 |                       |                  |                          |
@@ -74,7 +73,7 @@ sw1_type = 'Allied-Telesis'
 |           |                                     |            |       
 +-----------+                                     +------------+       
 ```
-Uncomment this section below when topo  arguments is equal to two_legacy
+***Uncomment this section below when topo  arguments is equal to two_legacy***
 ```
 vlan_name = 'PIXIE'
 dp_id_sw1 = 0x1
@@ -87,7 +86,7 @@ sw1_type = 'Open vSwitch'
 sw2_type = 'Open vSwitch'
 ```
 
-# Triangle :
+### Triangle :
 ```
 +---------+                       +---------+
 |         |                       |         |
@@ -105,7 +104,7 @@ sw2_type = 'Open vSwitch'
                 |        |                   
                 +--------+                   
 ```
-Uncomment this section below when topo  arguments is equal to triangle
+*** Uncomment this section below when topo  arguments is equal to triangle ***
 ```
 vlan_name = 'IXP_VLAN'
 dp_id_Edge1 = 0x1
