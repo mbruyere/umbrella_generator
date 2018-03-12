@@ -1,13 +1,13 @@
 Umbrella.py is a v0.1 script to generate fAUCET YAML config file  
 
 How to use it :
-
+```
 ./umbrella.py
 Usage:
   umbrella.py topo <topo_name> <csv_file_name> <faucet_config_file_name>
   umbrella.py --check_output_config | -c <faucet_config_to_check>
   umbrella.py -h | --help | --version
-
+```
 It is required to have a CSV file with this header column and filled with rigth information. 
 
 ```
@@ -23,11 +23,11 @@ idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
 Uncomment the approriate section and fullfil the right information. 
 
 *** One switch 
-
+```
 vlan_name = 'IXP_VLAN'
 dp_id_sw1 = 0x1
 sw1_type = 'Allied-Telesis'
-
+```
 
 ***One switch plus legacy non SDN switch 
 ```
@@ -38,11 +38,11 @@ sw1_type = 'Allied-Telesis'
 +-------------------+            +----------+
 ```
 Uncomment this section below when topo arguments is equal to one_legacy
-
+```
 vlan_name = 'IXP_VLAN'
 dp_id_sw1 = 0x1
 sw1_type = 'Allied-Telesis'
-
+```
 
 
 *** two switch plus two legacy:
@@ -66,7 +66,7 @@ sw1_type = 'Allied-Telesis'
 +-----------+                                     +------------+       
 ```
 Uncomment this section below when topo  arguments is equal to two_legacy
-
+```
 vlan_name = 'PIXIE'
 dp_id_sw1 = 0x1
 dp_id_sw2 = 0x2
@@ -76,7 +76,7 @@ sw2_primary_port = '27'
 sw2_backup_port = '28'
 sw1_type = 'Open vSwitch'
 sw2_type = 'Open vSwitch'
-
+```
 
 # Triangle :
 ```
@@ -97,7 +97,7 @@ sw2_type = 'Open vSwitch'
                 +--------+                   
 ```
 Uncomment this section below when topo  arguments is equal to triangle
-
+```
 vlan_name = 'IXP_VLAN'
 dp_id_Edge1 = 0x1
 dp_id_Edge2 = 0x2
@@ -111,3 +111,4 @@ sw2_portnum_to_sw1 = '25'
 sw2_portnum_to_sw3 = '26'
 sw3_portnum_to_sw1 = '28'
 sw3_portnum_to_sw2 = '25'
+```
