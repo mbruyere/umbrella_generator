@@ -1,4 +1,8 @@
 # This settings.py need to reflect the exact config of you deplyed network 
+# Global settings :
+
+# If you want to run with or without IPv6 support [False or True]
+IPv6_active = False
 
 # Uncomment the approriate section and fullfil the right information. 
 
@@ -18,11 +22,11 @@
 # +-------------------+            +----------+
 # Uncomment this section below when topo arguments is equal to one_legacy
 
-# vlan_name = 'IXP_VLAN'
-# dp_id_sw1 = 0x1
-# sw1_type = 'Allied-Telesis'
-
-
+vlan_name = 'PIXIE'
+vlan_number = 3
+dp_id_sw1 = 0x1
+sw1_port_to_legacy = 27
+sw1_type = 'Open vSwitch'
 
 # # two switch plus two legacy:
 # +-----------------------+                  +--------------------------+
@@ -74,16 +78,16 @@
 # Uncomment this section below when topo  arguments is equal to triangle
 
 
-vlan_name = 'IXP_VLAN'
-dp_id_Edge1 = 0x1
-dp_id_Edge2 = 0x2
-dp_id_Edge3 = 0x3
-sw1_type = 'Allied-Telesis'
-sw2_type = 'Allied-Telesis'
-sw3_type = 'Allied-Telesis'
-sw1_portnum_to_sw2 = '25'
-sw1_portnum_to_sw3 = '28'
-sw2_portnum_to_sw1 = '25'
-sw2_portnum_to_sw3 = '26'
-sw3_portnum_to_sw1 = '28'
-sw3_portnum_to_sw2 = '25'
+# vlan_name = 'IXP_VLAN'
+# dp_id_Edge1 = 0x1
+# dp_id_Edge2 = 0x2
+# dp_id_Edge3 = 0x3
+# sw1_type = 'Allied-Telesis'
+# sw2_type = 'Allied-Telesis'
+# sw3_type = 'Allied-Telesis'
+# sw1_portnum_to_sw2 = '25'
+# sw1_portnum_to_sw3 = '28'
+# sw2_portnum_to_sw1 = '25'
+# sw2_portnum_to_sw3 = '26'
+# sw3_portnum_to_sw1 = '28'
+# sw3_portnum_to_sw2 = '25'

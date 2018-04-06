@@ -1,4 +1,6 @@
-Umbrella.py is a v0.1 script to generate fAUCET YAML config file  
+Umbrella.py is a v0.1 script to generate FAUCET YAML config file  
+
+To know more about the Umbrella IXP architecture: [Umbrella ACM SOSR 18][https://conferences.sigcomm.org/sosr/2018/sosr18-finals/sosr18-poster-final14.pdf]
 
 It runs with Python 3.6 
 
@@ -9,7 +11,7 @@ pip3 install pathlib2==2.3.0 docopt==0.6.2 ruamel.yaml==0.15.35 ipaddress==1.0.1
 ```
 
 
-*** How to use it :***
+## How to use it :
 ```
 ./umbrella.py
 Usage:
@@ -19,6 +21,8 @@ Usage:
 ```
 It is required to have a CSV file with this header column and filled with rigth information. 
 
+You can find sample CSV files in the repository
+
 ```
 idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
 0,h1,10.0.0.1,2001:7f8:68::1,00:00:00:00:00:01,h1,TLS00,sw1,1,Production
@@ -27,18 +31,25 @@ idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,.membre,pop,switch,port,status
 3,h4,10.0.0.4,2001:7f8:68::4,00:00:00:00:00:04,h4,TLS01,sw1,4,Production
 ```
 
-## The settings.py need to reflect the exact config of your network 
+## The settings.py need to edited to reflect the configuration of your network 
 
 Uncomment the approriate section and fullfil the right information. 
 
-### One switch 
+If you want to run with or without IPv6 support
+**IPv6_active = [ False - True ]**
+
+### One single OpenFlow Switch 
+
+Uncomment this section below when topo arguments is equal to **one_switch**
+
 ```
 vlan_name = 'IXP_VLAN'
 dp_id_sw1 = 0x1
 sw1_type = 'Allied-Telesis'
 ```
 
-***One switch plus legacy non SDN switch***
+### One OpenFlow switch connected to a legacy non SDN switch
+
 ```
 +-------------------+            +----------+
 |                   |            |          |
@@ -46,14 +57,19 @@ sw1_type = 'Allied-Telesis'
 |                   |            |          |
 +-------------------+            +----------+
 ```
+
 Uncomment this section below when topo arguments is equal to one_legacy
+
 ```
-vlan_name = 'IXP_VLAN'
+vlan_name = 'PIXIE'
+vlan_number = 3
 dp_id_sw1 = 0x1
-sw1_type = 'Allied-Telesis'
+sw1_port_to_legacy = 27
+sw1_type = 'Open vSwitch'
 ```
 
-### Two switch plus two legacy:
+### Two switch plus two legacies:
+
 ```
 +-----------------------+                  +--------------------------+
 |                       |                  |                          |
@@ -73,7 +89,8 @@ sw1_type = 'Allied-Telesis'
 |           |                                     |            |       
 +-----------+                                     +------------+       
 ```
-***Uncomment this section below when topo  arguments is equal to two_legacy***
+
+Uncomment this section below when topo  arguments is equal to **two_legacy**
 ```
 vlan_name = 'PIXIE'
 dp_id_sw1 = 0x1
@@ -104,7 +121,9 @@ sw2_type = 'Open vSwitch'
                 |        |                   
                 +--------+                   
 ```
-*** Uncomment this section below when topo  arguments is equal to triangle ***
+
+Uncomment this section below when topo  arguments is equal to **triangle**
+
 ```
 vlan_name = 'IXP_VLAN'
 dp_id_Edge1 = 0x1
