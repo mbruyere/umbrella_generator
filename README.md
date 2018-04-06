@@ -58,7 +58,7 @@ sw1_type = 'Allied-Telesis'
 +-------------------+            +----------+
 ```
 
-Uncomment this section below when topo arguments is equal to one_legacy
+Uncomment this section below when topo arguments is equal to **one_legacy**
 
 ```
 vlan_name = 'PIXIE'
