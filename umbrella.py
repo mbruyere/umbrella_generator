@@ -160,12 +160,18 @@ def two_legacy(list_load):
     return(data)
 
 def triangle(list_load):
-    data = {'vlans': {'tousix': {'vid': 100, 'description': qs(vlan_name)}}, 'dps': {'Edge1': {'dp_id': HexInt(dp_id_Edge1), 'hardware': qs(sw1_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 1, 'opstatus_reconf': False}, int(sw1_portnum_to_sw2): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 1, 'opstatus_reconf': False}, int(sw1_portnum_to_sw3): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 1, 'opstatus_reconf': False}}
-                                                                                           }, 'Edge2': {'dp_id': HexInt(0x2), 'hardware': qs(sw2_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 2, 'opstatus_reconf': False}, int(sw2_portnum_to_sw1): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 2, 'opstatus_reconf': False}, int(sw2_portnum_to_sw3): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 2, 'opstatus_reconf': False}}}, 'Edge3': {'dp_id': HexInt(0x3), 'hardware': qs(sw3_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 3, 'opstatus_reconf': False}, int(sw3_portnum_to_sw1): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 3, 'opstatus_reconf': False}, int(sw3_portnum_to_sw2): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 100, 'acl_in': 3, 'opstatus_reconf': False}}                                                                                                                                                                                                                                                                                                                                                                                                              }}, 'acls': {1: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}], 2: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}], 3: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}]}}
+    data = {'vlans': {'Edge1': {'vid': 101, 'description': qs(vlan_name), 'acl_in': 1}, 'Edge2': {'vid': 102, 'description': qs(vlan_name), 'acl_in': 2}, 'Edge3': {'vid': 103, 'description': qs(vlan_name), 'acl_in': 3}} , 
+            'dps': {'Edge1': {'dp_id': HexInt(dp_id_Edge1), 'hardware': qs(sw1_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': 101, 'opstatus_reconf': False}, int(sw1_portnum_to_sw2): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 101, 'opstatus_reconf': False}, int(sw1_portnum_to_sw3): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 101, 'opstatus_reconf': False}}}, 
+                    'Edge2': {'dp_id': HexInt(dp_id_Edge2), 'hardware': qs(sw2_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': 102, 'opstatus_reconf': False}, int(sw2_portnum_to_sw1): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 102, 'opstatus_reconf': False}, int(sw2_portnum_to_sw3): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 102, 'opstatus_reconf': False}}}, 
+                    'Edge3': {'dp_id': HexInt(dp_id_Edge3), 'hardware': qs(sw3_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': 103, 'opstatus_reconf': False}, int(sw3_portnum_to_sw1): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 103, 'opstatus_reconf': False}, int(sw3_portnum_to_sw2): {'name': qs('link'), 'description': qs('link'), 'native_vlan': 103, 'opstatus_reconf': False}}}},
+            'acls': {1: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}], 
+                     2: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}], 
+                     3: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}]}}
+    print(data)
     for i in range(len(list_load)):
         if list_load[i]['switch'] == 'Edge1' and list_load[i]['status'] == 'Production':
             data['dps']['Edge1']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(
-                list_load[i]['hostname']), 'native_vlan': 100, 'acl_in': 1}
+                list_load[i]['hostname']), 'native_vlan': 101}
             data['acls'][1].append({'rule': {'dl_dst': qs(list_load[i]['macaddr']), 'actions': {
                                    'output': {'port': int(list_load[i]['port'])}}}})
             if IPv6_active == True:
@@ -195,7 +201,7 @@ def triangle(list_load):
         
         elif list_load[i]['switch'] == 'Edge2' and list_load[i]['status'] == 'Production':
             data['dps']['Edge2']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(
-                list_load[i]['hostname']), 'native_vlan': 100, 'acl_in': 2}
+                list_load[i]['hostname']), 'native_vlan': 102}
             data['acls'][1].append({'rule': {'dl_dst': qs(list_load[i]['macaddr']), 'actions': {
                                    'output': {'failover': {'group_id': 600 + i, 'ports': Braket('[' + sw1_portnum_to_sw2+ ',' + sw1_portnum_to_sw3 + ']')}}}}})
             if IPv6_active == True:
@@ -225,7 +231,7 @@ def triangle(list_load):
         
         elif list_load[i]['switch'] == 'Edge3' and list_load[i]['status'] == 'Production':
             data['dps']['Edge3']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(
-                list_load[i]['hostname']), 'native_vlan': 100, 'acl_in': 3}
+                list_load[i]['hostname']), 'native_vlan': 103}
             data['acls'][1].append({'rule': {'dl_dst': qs(list_load[i]['macaddr']), 'actions': {
                                    'output': {'failover': {'group_id': 1200 + i, 'ports': Braket('[' + sw1_portnum_to_sw3+ ',' + sw1_portnum_to_sw2 + ']')}}}}})
             if IPv6_active == True:
@@ -258,6 +264,7 @@ def triangle(list_load):
     data['acls'][1].append({'rule': {'actions': {'allow': 0}}})
     data['acls'][2].append({'rule': {'actions': {'allow': 0}}})
     data['acls'][3].append({'rule': {'actions': {'allow': 0}}})
+    print(data)
     return(data)
 
 

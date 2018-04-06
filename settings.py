@@ -22,11 +22,11 @@ IPv6_active = False
 # +-------------------+            +----------+
 # Uncomment this section below when topo arguments is equal to one_legacy
 
-vlan_name = 'PIXIE'
-vlan_number = 3
-dp_id_sw1 = 0x1
-sw1_port_to_legacy = 27
-sw1_type = 'Open vSwitch'
+# vlan_name = 'PIXIE'
+# vlan_number = 3
+# dp_id_sw1 = 0x1
+# sw1_port_to_legacy = 27
+# sw1_type = 'Open vSwitch'
 
 # # two switch plus two legacy:
 # +-----------------------+                  +--------------------------+
@@ -78,16 +78,16 @@ sw1_type = 'Open vSwitch'
 # Uncomment this section below when topo  arguments is equal to triangle
 
 
-# vlan_name = 'IXP_VLAN'
-# dp_id_Edge1 = 0x1
-# dp_id_Edge2 = 0x2
-# dp_id_Edge3 = 0x3
-# sw1_type = 'Allied-Telesis'
-# sw2_type = 'Allied-Telesis'
-# sw3_type = 'Allied-Telesis'
-# sw1_portnum_to_sw2 = '25'
-# sw1_portnum_to_sw3 = '28'
-# sw2_portnum_to_sw1 = '25'
-# sw2_portnum_to_sw3 = '26'
-# sw3_portnum_to_sw1 = '28'
-# sw3_portnum_to_sw2 = '25'
+vlan_name = 'IXP_VLAN'
+dp_id_Edge1 = 0x1
+dp_id_Edge2 = 0x2
+dp_id_Edge3 = 0x3
+sw1_type = 'Open vSwitch'
+sw2_type = 'Open vSwitch'
+sw3_type = 'Open vSwitch'
+sw1_portnum_to_sw2 = '1'
+sw1_portnum_to_sw3 = '2'
+sw2_portnum_to_sw1 = '1'
+sw2_portnum_to_sw3 = '2'
+sw3_portnum_to_sw1 = '2'
+sw3_portnum_to_sw2 = '1'
