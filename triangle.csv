@@ -1,0 +1,10 @@
+idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,membre,pop,switch,port,status
+0,h1,10.0.0.1,2001:7f8:68::1,00:00:00:00:00:01,h1,NTT,Edge1,3,Production
+1,h2,10.0.0.2,2001:7f8:68::2,00:00:00:00:00:02,h2,NTT,Edge1,4,Production
+2,h3,10.0.0.3,2001:7f8:68::3,00:00:00:00:00:03,h3,NTT,Edge1,5,Production
+3,h4,10.0.0.4,2001:7f8:68::4,00:00:00:00:00:04,h4,NTT,Edge2,3,Production
+4,h5,10.0.0.5,2001:7f8:68::5,00:00:00:00:00:05,h5,NTT,Edge2,4,Production
+5,h6,10.0.0.6,2001:7f8:68::6,00:00:00:00:00:06,h6,NTT,Edge2,5,Production
+6,h7,10.0.0.7,2001:7f8:68::7,00:00:00:00:00:07,h7,NTT,Edge3,3,Production
+7,h8,10.0.0.8,2001:7f8:68::8,00:00:00:00:00:08,h8,NTT,Edge3,4,Production
+8,h9,10.0.0.9,2001:7f8:68::9,00:00:00:00:00:09,h9,NTT,Edge3,5,Production
