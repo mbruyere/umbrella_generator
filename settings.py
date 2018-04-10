@@ -48,15 +48,16 @@ IPv6_active = False
 # +-----------+                                     +------------+       
 # Uncomment this section below when topo  arguments is equal to two_legacy
 
-# vlan_name = 'PIXIE'
-# dp_id_sw1 = 0x1
-# dp_id_sw2 = 0x2
-# sw1_primary_port = '27'
-# sw1_backup_port = '28'
-# sw2_primary_port = '27'
-# sw2_backup_port = '28'
-# sw1_type = 'Open vSwitch'
-# sw2_type = 'Open vSwitch'
+vlan_name = 'PIXIE'
+vlan_number = 2 
+dp_id_sw1 = 0x1
+dp_id_sw2 = 0x2
+sw1_primary_port = '3'
+sw1_backup_port = '4'
+sw2_primary_port = '3'
+sw2_backup_port = '4'
+sw1_type = 'Open vSwitch'
+sw2_type = 'Open vSwitch'
 
 
 # # Triangle :
@@ -78,16 +79,16 @@ IPv6_active = False
 # Uncomment this section below when topo  arguments is equal to triangle
 
 
-vlan_name = 'IXP_VLAN'
-dp_id_Edge1 = 0x1
-dp_id_Edge2 = 0x2
-dp_id_Edge3 = 0x3
-sw1_type = 'Open vSwitch'
-sw2_type = 'Open vSwitch'
-sw3_type = 'Open vSwitch'
-sw1_portnum_to_sw2 = '1'
-sw1_portnum_to_sw3 = '2'
-sw2_portnum_to_sw1 = '1'
-sw2_portnum_to_sw3 = '2'
-sw3_portnum_to_sw1 = '2'
-sw3_portnum_to_sw2 = '1'
+# vlan_name = 'IXP_VLAN'
+# dp_id_Edge1 = 0x1
+# dp_id_Edge2 = 0x2
+# dp_id_Edge3 = 0x3
+# sw1_type = 'Open vSwitch'
+# sw2_type = 'Open vSwitch'
+# sw3_type = 'Open vSwitch'
+# sw1_portnum_to_sw2 = '47'
+# sw1_portnum_to_sw3 = '48'
+# sw2_portnum_to_sw1 = '1'
+# sw2_portnum_to_sw3 = '2'
+# sw3_portnum_to_sw1 = '2'
+# sw3_portnum_to_sw2 = '1'
