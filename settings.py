@@ -24,9 +24,9 @@ IPv6_active = False
 
 vlan_name = 'PIXIE'
 vlan_number = 3
-dp_id_sw1 = 0x1
-sw1_port_to_legacy = 3
-sw1_type = 'Open vSwitch'
+dp_id_sw1 = 0x1aeba5a6f8
+sw1_port_to_legacy = 27
+sw1_type = 'Allied-Telesis'
 vlan_local = 3
 vlan_interco = 3000
 
