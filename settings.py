@@ -22,11 +22,13 @@ IPv6_active = False
 # +-------------------+            +----------+
 # Uncomment this section below when topo arguments is equal to one_legacy
 
-# vlan_name = 'PIXIE'
-# vlan_number = 3
-# dp_id_sw1 = 0x1
-# sw1_port_to_legacy = 27
-# sw1_type = 'Open vSwitch'
+vlan_name = 'PIXIE'
+vlan_number = 3
+dp_id_sw1 = 0x1
+sw1_port_to_legacy = 3
+sw1_type = 'Open vSwitch'
+vlan_local = 3
+vlan_interco = 3000
 
 # # two switch plus two legacy:
 # +-----------------------+                  +--------------------------+
@@ -48,16 +50,16 @@ IPv6_active = False
 # +-----------+                                     +------------+       
 # Uncomment this section below when topo  arguments is equal to two_legacy
 
-vlan_name = 'PIXIE'
-vlan_number = 2 
-dp_id_sw1 = 0x1
-dp_id_sw2 = 0x2
-sw1_primary_port = '3'
-sw1_backup_port = '4'
-sw2_primary_port = '3'
-sw2_backup_port = '4'
-sw1_type = 'Open vSwitch'
-sw2_type = 'Open vSwitch'
+# vlan_name = 'PIXIE'
+# vlan_number = 2 
+# dp_id_sw1 = 0x1
+# dp_id_sw2 = 0x2
+# sw1_primary_port = '3'
+# sw1_backup_port = '4'
+# sw2_primary_port = '3'
+# sw2_backup_port = '4'
+# sw1_type = 'Open vSwitch'
+# sw2_type = 'Open vSwitch'
 
 
 # # Triangle :

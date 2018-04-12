@@ -77,12 +77,15 @@ def one_switch(list_load):
     return(data)
 
 def one_legacy(list_load):
-    data = {'vlans': {'PIXIE': {'vid': vlan_number, 'description': qs(vlan_name)}}, 'dps': {'sw1': {'dp_id': HexInt(dp_id_sw1), 'hardware': qs(sw1_type), 'interfaces': {1: {'name': qs('link'), 'description': qs('link'), 'native_vlan': vlan_number, 'acl_in': 1}, 2: {'name': qs('link'), 'description': qs('link'), 'native_vlan': vlan_number, 'acl_in': 1}}}}, 'acls': {1: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}], 2: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}]}}
+    data = {'vlans': {vlan_name+'_vlan': {'vid': vlan_local,'acl_in': 1 } }, 
+            'dps': {'sw1': {'dp_id': HexInt(dp_id_sw1), 'hardware': qs(sw1_type), 
+                            'interfaces': {sw1_port_to_legacy: {'name': qs('Link_to_legacy'), 'description': qs('Link_to_legacy'), 'tagged_vlans': Braket('['+vlan_name+'_vlan]')}}}}, 
+            'acls': {1: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}] }}
     for i in range(len(list_load)):
     # OF dataplane 
         if list_load[i]['switch'] == 'sw1' and list_load[i]['status'] == 'Production':
             data['dps']['sw1']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(
-                list_load[i]['hostname']), 'native_vlan': vlan_number, 'acl_in': 1}
+                list_load[i]['hostname']), 'tagged_vlans': Braket('['+vlan_name+'_vlan]')}
 
             data['acls'][1].append({'rule': {'dl_dst': qs(list_load[i]['macaddr']), 'actions': {
                                    'output': {'port': int(list_load[i]['port'])}}}})
@@ -93,20 +96,19 @@ def one_legacy(list_load):
                     list_load[i]['addr_ipv6']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
     # Legacy 
         elif list_load[i]['switch'] == 'legacy' and list_load[i]['status'] == 'Production':
-            data['acls'][2].append({'rule': {'dl_dst': qs(list_load[i]['macaddr']), 'actions': {
+            data['acls'][1].append({'rule': {'dl_dst': qs(list_load[i]['macaddr']), 'actions': {
                                    'output': {'port': sw1_port_to_legacy }}}})
 
-            data['acls'][2].append({'rule': {'dl_type': HexInt(0x806), 'dl_dst': qs('ff:ff:ff:ff:ff:ff'), 'arp_tpa': qs(list_load[i]['addr_ipv4']), 'actions': {'output': {'port': sw1_port_to_legacy}}}})
+            data['acls'][1].append({'rule': {'dl_type': HexInt(0x806), 'dl_dst': qs('ff:ff:ff:ff:ff:ff'), 'arp_tpa': qs(list_load[i]['addr_ipv4']), 'actions': {'output': {'port': sw1_port_to_legacy}}}})
 
             if IPv6_active == True:
-                data['acls'][2].append({'rule': {'dl_type': HexInt(0x86dd), 'ip_proto': 58, 'icmpv6_type': 135, 'ipv6_nd_target': qs(
+                data['acls'][1].append({'rule': {'dl_type': HexInt(0x86dd), 'ip_proto': 58, 'icmpv6_type': 135, 'ipv6_nd_target': qs(
                 list_load[i]['addr_ipv6']), 'actions': {'output': {'port': sw1_port_to_legacy}}}})
 
-    data['dps']['sw1']['interfaces'][sw1_port_to_legacy] = {'name': 'Link_to_legacy', 'description': 'Link_to_legacy', 'native_vlan': vlan_number, 'acl_in': 2}
+    data['dps']['sw1']['interfaces'][sw1_port_to_legacy] = {'name': 'Link_to_legacy', 'description': 'Link_to_legacy', 'tagged_vlans': Braket('['+vlan_name+'_vlan]') }
     data['acls'][1].pop(0)
-    data['acls'][2].pop(0)
     data['acls'][1].append({'rule': {'actions': {'allow': 0}}})
-    data['acls'][2].append({'rule': {'actions': {'allow': 0}}})
+    
     return(data)
 
 def two_legacy(list_load):
