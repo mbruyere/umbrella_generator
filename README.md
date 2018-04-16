@@ -1,5 +1,8 @@
 Umbrella.py is a v0.1 script to generate FAUCET YAML config file  
 
+**the branch triangle_v2 is where the code is in progress - merge to master every end of month**
+to change branch after cloning : ' git checkout triangle_v2 '
+
 To know more about the Umbrella IXP architecture: [Umbrella ACM SOSR 18][https://conferences.sigcomm.org/sosr/2018/sosr18-finals/sosr18-poster-final14.pdf]
 
 It runs with Python 3.6 
