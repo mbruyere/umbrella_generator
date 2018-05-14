@@ -9,9 +9,9 @@ IPv6_active = False
 
 # One switch 
 
-# vlan_name = 'IXP_VLAN'
-# dp_id_sw1 = 0x1
-# sw1_type = 'Allied-Telesis'
+vlan_name = 'IXP_VLAN'
+dp_id_sw1 = 0x1
+sw1_type = 'Lagopus'
 
 
 # One switch plus legacy non SDN switch 
@@ -22,13 +22,13 @@ IPv6_active = False
 # +-------------------+            +----------+
 # Uncomment this section below when topo arguments is equal to one_legacy
 
-vlan_name = 'PIXIE'
-vlan_number = 3
-dp_id_sw1 = 0x1aeba5a6f8
-sw1_port_to_legacy = 27
-sw1_type = 'Allied-Telesis'
-vlan_local = 3
-vlan_interco = 3000
+# vlan_name = 'PIXIE'
+# vlan_number = 3
+# dp_id_sw1 = 0x1aeba5a6f8
+# sw1_port_to_legacy = 27
+# sw1_type = 'Allied-Telesis'
+# vlan_local = 3
+# vlan_interco = 3000
 
 # # two switch plus two legacy:
 # +-----------------------+                  +--------------------------+
