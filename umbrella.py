@@ -78,26 +78,6 @@ def one_switch(list_load):
 
 def one_switch_vlan(list_load):
     ''' Function generating the faucet config for a single OF switch with Vlan'''
-
-    port_seen = set()
-    vlan_seen = set()
-    port_vlan = dict()
-    l = []
-    for n in range(len(list_load)):
-        if list_load[n]['port'] in port_seen:
-            l.append(port_vlan[int((list_load[n]['port']))])
-            l.append(int(list_load[n]['vlan']))
-            port_vlan.update({int(list_load[n]['port']): l  })
-            l = []
-        else:
-            port_vlan.update({int(list_load[n]['port']): int(list_load[n]['vlan']) })
-        port_seen.update(list_load[n]['port'])
-    
-    for key, value in port_vlan.items():
-        for ite in port_vlan[key]:
-            vlan_seen.update(port_vlan[key])
-
-
     data = {'vlans': {vlan_name: {'vid': 100, 'description': qs(vlan_name)}}, 'dps': {'sw1': {'dp_id': HexInt(dp_id_sw1), 'hardware': qs(sw1_type), 'interfaces': {1: {'name': qs(
         'link'), 'description': qs('link'), 'acl_in': 1}}}}, 'acls': {1: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}]}}
 
