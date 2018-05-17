@@ -83,14 +83,14 @@ def one_switch_vlan(list_load):
 
     for i in range(len(list_load)):
 
-        data['dps']['sw1']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(list_load[i]['hostname']), 'acl_in': 1}
+        data['dps']['sw1']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(list_load[i]['hostname']), 'native_vlan': 100 ,'acl_in': 1}
         
-        data['acls'][1].append({'rule': {'vid':int(list_load[i]['vlan']),'dl_dst': qs(list_load[i]['macaddr']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
+        data['acls'][1].append({'rule': {'dl_vlan':int(list_load[i]['vlan']),'dl_dst': qs(list_load[i]['macaddr']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
         if IPv6_active == True:
-            data['acls'][1].append({'rule': {'vid':int(list_load[i]['vlan']),'dl_type': HexInt(0x86dd), 'ip_proto': 58, 'icmpv6_type': 135, 'ipv6_nd_target': qs(
+            data['acls'][1].append({'rule': {'dl_vlan':int(list_load[i]['vlan']),'dl_type': HexInt(0x86dd), 'ip_proto': 58, 'icmpv6_type': 135, 'ipv6_nd_target': qs(
                 list_load[i]['addr_ipv6']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
         
-        data['acls'][1].append({'rule': {'vid':int(list_load[i]['vlan']),'dl_type': HexInt(0x806), 'dl_dst': qs('ff:ff:ff:ff:ff:ff'), 'arp_tpa': qs(
+        data['acls'][1].append({'rule': {'dl_vlan':int(list_load[i]['vlan']),'dl_type': HexInt(0x806), 'dl_dst': qs('ff:ff:ff:ff:ff:ff'), 'arp_tpa': qs(
             list_load[i]['addr_ipv4']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
     
     data['acls'][1].pop(0)
