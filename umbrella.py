@@ -76,6 +76,48 @@ def one_switch(list_load):
     data['acls'][1].append({'rule': {'actions': {'allow': 0}}})
     return(data)
 
+def one_switch_vlan(list_load):
+    ''' Function generating the faucet config for a single OF switch with Vlan'''
+
+    port_seen = set()
+    vlan_seen = set()
+    port_vlan = dict()
+    l = []
+    for n in range(len(list_load)):
+        if list_load[n]['port'] in port_seen:
+            l.append(port_vlan[int((list_load[n]['port']))])
+            l.append(int(list_load[n]['vlan']))
+            port_vlan.update({int(list_load[n]['port']): l  })
+            l = []
+        else:
+            port_vlan.update({int(list_load[n]['port']): int(list_load[n]['vlan']) })
+        port_seen.update(list_load[n]['port'])
+    
+    for key, value in port_vlan.items():
+        for ite in port_vlan[key]:
+            vlan_seen.update(port_vlan[key])
+
+
+    data = {'vlans': {vlan_name: {'vid': 100, 'description': qs(vlan_name)}}, 'dps': {'sw1': {'dp_id': HexInt(dp_id_sw1), 'hardware': qs(sw1_type), 'interfaces': {1: {'name': qs(
+        'link'), 'description': qs('link'), 'acl_in': 1}}}}, 'acls': {1: [{'rule': {'dl_dst': '00:00:00:00:00:01', 'actions': {'output': {'port': 1}}}}]}}
+
+    for i in range(len(list_load)):
+
+        data['dps']['sw1']['interfaces'][int(list_load[i]['port'])] = {'name': qs(list_load[i]['hostname']), 'description': qs(list_load[i]['hostname']), 'acl_in': 1}
+        
+        data['acls'][1].append({'rule': {'vid':int(list_load[i]['vlan']),'dl_dst': qs(list_load[i]['macaddr']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
+        if IPv6_active == True:
+            data['acls'][1].append({'rule': {'vid':int(list_load[i]['vlan']),'dl_type': HexInt(0x86dd), 'ip_proto': 58, 'icmpv6_type': 135, 'ipv6_nd_target': qs(
+                list_load[i]['addr_ipv6']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
+        
+        data['acls'][1].append({'rule': {'vid':int(list_load[i]['vlan']),'dl_type': HexInt(0x806), 'dl_dst': qs('ff:ff:ff:ff:ff:ff'), 'arp_tpa': qs(
+            list_load[i]['addr_ipv4']), 'actions': {'output': {'port': int(list_load[i]['port'])}}}})
+    
+    data['acls'][1].pop(0)
+    data['acls'][1].append({'rule': {'actions': {'allow': 0}}})
+    return(data)
+
+
 def one_legacy(list_load):
     data = {'vlans': {vlan_name+'_vlan': {'vid': vlan_local,'acl_in': 1 } }, 
             'dps': {'sw1': {'dp_id': HexInt(dp_id_sw1), 'hardware': qs(sw1_type), 
@@ -327,6 +369,9 @@ if __name__ == '__main__':
             out_data = two_legacy(input_data)
         elif arguments['<topo_name>'] == 'triangle':
             out_data = triangle(input_data)
+        elif arguments['<topo_name>'] == 'one_switch_vlan':
+            out_data = one_switch_vlan(input_data)   
+            print('one_switch_vlan')
 
         if len(out_data) != 0 :
             gen_faucet_yaml(out_data, arguments['<faucet_config_file_name>'])

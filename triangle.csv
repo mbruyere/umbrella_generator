@@ -1,5 +1,5 @@
-idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,membre,pop,switch,port,status
-0,h1,10.0.0.1,2001:7f8:68::1,00:00:00:00:00:01,h1,NTT,Edge1,3,Production
+idrtr,hostname,addr_ipv4,addr_ipv6,macaddr,membre,pop,switch,port,status,publickey
+0,h1,10.0.0.1,2001:7f8:68::1,00:00:00:00:00:01,h1,NTT,Edge1,3,Production,asdfghjklsdfghjkfghjk
 1,h2,10.0.0.2,2001:7f8:68::2,00:00:00:00:00:02,h2,NTT,Edge1,4,Production
 2,h3,10.0.0.3,2001:7f8:68::3,00:00:00:00:00:03,h3,NTT,Edge1,5,Production
 3,h4,10.0.0.4,2001:7f8:68::4,00:00:00:00:00:04,h4,NTT,Edge1,6,Production
