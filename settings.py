@@ -7,7 +7,7 @@ IPv6_active = False
 # Uncomment the approriate section and fullfil the right information. 
 
 
-# One switch 
+# One switch  
 
 vlan_name = 'IXP_VLAN'
 dp_id_sw1 = 0x1
@@ -94,3 +94,14 @@ sw1_type = 'Lagopus'
 # sw2_portnum_to_sw3 = '2'
 # sw3_portnum_to_sw1 = '2'
 # sw3_portnum_to_sw2 = '1'
+
+
+# PIXIE ShowNet settings 
+
+vlan_name = 'IXP_VLAN'
+dp_id_sw1 = 0x1
+dp_id_sw2 = 0x2
+dp_id_sw3 = 0x3
+sw1_type = 'Open vSwitch'
+sw2_type = 'Open vSwitch'
+sw3_type = 'Open vSwitch'
