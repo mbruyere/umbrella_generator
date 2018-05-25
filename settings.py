@@ -98,10 +98,16 @@ sw1_type = 'Lagopus'
 
 # PIXIE ShowNet settings 
 
-vlan_name = 'IXP_VLAN'
+vlan_id_BBT = '10'
+vlan_id_KDDI = '20'
+vlan_id_spare = '30'
 dp_id_sw1 = 0x1
 dp_id_sw2 = 0x2
 dp_id_sw3 = 0x3
 sw1_type = 'Open vSwitch'
 sw2_type = 'Open vSwitch'
 sw3_type = 'Open vSwitch'
+sw1_portnum_to_sw2 = 2
+sw2_portnum_to_sw1 = 2
+sw2_portnum_to_sw3 = 3
+sw3_portnum_to_sw2 = 2
